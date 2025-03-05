@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, create_async_engin
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from app.src.app.config import settings
+from src.app.config import settings
 
 
 Base = declarative_base()
@@ -44,10 +44,8 @@ class PoolConnector:
     def __new__(cls: Type['PoolConnector']) -> 'PoolConnector':
         if not isinstance(cls._instance, cls):
             cls._instance = object.__new__(cls)
+            cls._instance.async_session = async_session
         return cls._instance
-
-    def __init__(self) -> None:
-        self.async_session: sessionmaker = init_pool.create_pool()
 
     @classmethod
     async def get_session(cls) -> AsyncIterator[AsyncSession]:
@@ -56,7 +54,7 @@ class PoolConnector:
 
         :return: AsyncSession
         """
-        async with cls.async_session() as session:
+        async with cls._instance.async_session() as session:
             try:
                 yield session
                 await session.commit()
@@ -69,7 +67,7 @@ class PoolConnector:
     @classmethod
     @asynccontextmanager
     async def session(cls) -> AsyncIterator[AsyncSession]:
-        async with cls.async_session() as session:
+        async with cls._instance.async_session() as session:
             try:
                 yield session
                 await session.commit()

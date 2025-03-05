@@ -1,11 +1,11 @@
 from fastapi import APIRouter
 from sqlalchemy import text
 
-from app.src.app.api.rest.schemas.responses.health import HealthSchema
-from app.src.app.config import settings
-from app.src.app.enums.tools import HealthStatusType
-from app.src.app.extensions.logging import logger
-from app.src.app.extensions.sqlalchemy import PoolConnector
+from src.app.api.rest.schemas.responses.health import HealthSchema
+from src.app.config import settings
+from src.app.enums.tools import HealthStatusType
+from src.app.extensions.logging import logger
+from src.app.extensions.sqlalchemy import PoolConnector
 
 
 router = APIRouter(
@@ -51,4 +51,4 @@ async def health_check() -> HealthSchema:
     response_model=HealthSchema,
 )
 async def error_response() -> None:
-    1 / 0 
+    1 / 0

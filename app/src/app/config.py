@@ -36,11 +36,11 @@ class LocalSettings(Settings):
 
     DEBUG: bool = True
     RELOAD: bool = True
-    APP_HOST: str = 'localhost'
-    POSTGRES_USER: str = ''
-    POSTGRES_PASSWORD: str = ''
-    POSTGRES_DB: str = ''
-    POSTGRES_HOST: str = ''
+    APP_HOST: str = '0.0.0.0'
+    POSTGRES_USER: str = 'postgres'
+    POSTGRES_PASSWORD: str = '020290'
+    POSTGRES_DB: str = 'tron_pulse'
+    POSTGRES_HOST: str = 'localhost'
     POSTGRES_PORT: int = 5432
 
 

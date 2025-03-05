@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from app.src.app.enums.tools import HealthStatusType
+from src.app.enums.tools import HealthStatusType
 
 
 class HealthSchema(BaseModel):

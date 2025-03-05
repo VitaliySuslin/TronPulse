@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 
-from app.src.app.api.urls import init_routers
-from app.src.app.config import settings
-from app.src.app.extensions.sqlalchemy import PoolConnector
-from app.src.app.middlewares.init_middlewares import add_middlewares
+from src.app.api.urls import init_routers
+from src.app.config import settings
+from src.app.extensions.sqlalchemy import PoolConnector
+from src.app.middlewares.init_middlewares import add_middlewares
 
 
 def create_app() -> FastAPI:
@@ -18,7 +18,7 @@ def create_app() -> FastAPI:
     add_middlewares(app)
     init_routers(app)
     PoolConnector()
-    
+
     return app
 
 app = create_app()

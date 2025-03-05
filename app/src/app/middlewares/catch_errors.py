@@ -3,9 +3,9 @@ from starlette.requests import Request
 from starlette.responses import JSONResponse
 
 
-from app.src.app.middlewares.trace.traceback_handler import get_last_trace
-from app.src.app.enums.services import BackendServicesNameEnum
-from app.src.app.utils.pydantic.error_response import (
+from src.app.middlewares.trace.traceback_handler import get_last_trace
+from src.app.enums.services import BackendServicesNameEnum
+from src.app.utils.pydantic.error_response import (
     DefaultErrorResponseSchema,
     DetailDefaultErrorResponseSchema,
 )

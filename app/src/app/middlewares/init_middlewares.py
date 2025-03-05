@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from app.src.app.middlewares.catch_errors import (
+from src.app.middlewares.catch_errors import (
     SendDefaultErrorResponseByExceptionMiddleware,
 )
 
